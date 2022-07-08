@@ -1,3 +1,4 @@
+import random
 from random import sample, shuffle
 
 import cv2
@@ -29,6 +30,7 @@ class YoloDataset(Dataset):
         #---------------------------------------------------#
         if self.mosaic:
             if self.rand() < 0.5:
+
                 lines = sample(self.annotation_lines, 3)
                 lines.append(self.annotation_lines[index])
                 shuffle(lines)
@@ -49,6 +51,7 @@ class YoloDataset(Dataset):
 
     def rand(self, a=0, b=1):
         return np.random.rand()*(b-a) + a
+
 
     def get_random_data(self, annotation_line, input_shape, jitter=.3, hue=.1, sat=1.5, val=1.5, random=True):
         line    = annotation_line.split()
@@ -119,7 +122,7 @@ class YoloDataset(Dataset):
         new_image = Image.new('RGB', (w,h), (128,128,128))
         new_image.paste(image, (dx, dy))
         image = new_image
-
+        image=RSSR(image)
         #------------------------------------------#
         #   翻转图像
         #------------------------------------------#
@@ -233,10 +236,10 @@ class YoloDataset(Dataset):
             box = np.array([np.array(list(map(int,box.split(',')))) for box in line_content[1:]])
             
             # 是否翻转图片
-            flip = self.rand()<.5
-            if flip and len(box)>0:
-                image = image.transpose(Image.FLIP_LEFT_RIGHT)
-                box[:, [0,2]] = iw - box[:, [2,0]]
+            # flip = self.rand()<.5
+            # if flip and len(box)>0:
+            #     image = image.transpose(Image.FLIP_LEFT_RIGHT)
+            #     box[:, [0,2]] = iw - box[:, [2,0]]
 
             nw = nws[index] 
             nh = nhs[index] 
@@ -279,19 +282,19 @@ class YoloDataset(Dataset):
         new_image[:cuty, cutx:, :] = image_datas[3][:cuty, cutx:, :]
 
         # 进行色域变换
-        hue = self.rand(-hue, hue)
-        sat = self.rand(1, sat) if self.rand()<.5 else 1/self.rand(1, sat)
-        val = self.rand(1, val) if self.rand()<.5 else 1/self.rand(1, val)
-        x = cv2.cvtColor(np.array(new_image/255,np.float32), cv2.COLOR_RGB2HSV)
-        x[..., 0] += hue*360
-        x[..., 0][x[..., 0]>1] -= 1
-        x[..., 0][x[..., 0]<0] += 1
-        x[..., 1] *= sat
-        x[..., 2] *= val
-        x[x[:, :, 0]>360, 0] = 360
-        x[:, :, 1:][x[:, :, 1:]>1] = 1
-        x[x<0] = 0
-        new_image = cv2.cvtColor(x, cv2.COLOR_HSV2RGB)*255
+        # hue = self.rand(-hue, hue)
+        # sat = self.rand(1, sat) if self.rand()<.5 else 1/self.rand(1, sat)
+        # val = self.rand(1, val) if self.rand()<.5 else 1/self.rand(1, val)
+        # x = cv2.cvtColor(np.array(new_image/255,np.float32), cv2.COLOR_RGB2HSV)
+        # x[..., 0] += hue*360
+        # x[..., 0][x[..., 0]>1] -= 1
+        # x[..., 0][x[..., 0]<0] += 1
+        # x[..., 1] *= sat
+        # x[..., 2] *= val
+        # x[x[:, :, 0]>360, 0] = 360
+        # x[:, :, 1:][x[:, :, 1:]>1] = 1
+        # x[x<0] = 0
+        # new_image = cv2.cvtColor(x, cv2.COLOR_HSV2RGB)*255
 
         # 对框进行进一步的处理
         new_boxes = self.merge_bboxes(box_datas, cutx, cuty)
@@ -307,3 +310,35 @@ def yolo_dataset_collate(batch):
         bboxes.append(box)
     images = np.array(images)
     return images, bboxes
+
+
+def RSSR(img, size=3, day2night=True, rate_dark=15, rate_light=2):
+    rate=random.random()
+    img_1 = np.transpose(img, [2, 0, 1])
+    if day2night:
+        dark = cv2.addWeighted(img,1,0,0,-150)
+        dark_1 = np.transpose(dark, [2, 0, 1])
+    else:
+        dark_1 = img_1
+    dd = []
+    dd_ill = []
+    for channel, dark_channel in zip(img_1, dark_1):
+        blur_channel = cv2.GaussianBlur(dark_channel, (size, size), 0)
+        img_log = np.log(1 + (channel) / 255.0)
+        blur_log = np.log(1 + (blur_channel) / 255.0)
+        img_illum = img_log * blur_log  # illumination
+        if day2night:
+            channel = img_log + rate*rate_dark * img_illum
+        else:
+            channel = img_log - rate_light * img_illum
+        channel = cv2.normalize(channel, None, 0, 255, cv2.NORM_MINMAX)
+        channel_ill = cv2.normalize(blur_log, None, 0, 255, cv2.NORM_MINMAX)
+        dd.append(channel)
+        dd_ill.append(channel_ill)
+    dd = np.array(dd, dtype='uint8')
+    dd = np.transpose(dd, [1, 2, 0])
+    dd_ill = np.array(dd_ill, dtype='uint8')
+    dd_ill = np.transpose(dd_ill, [1, 2, 0])
+    cv2.imshow('ssr', dd)
+    # cv2.imshow('ssr_ill', dd_ill)
+    return dd

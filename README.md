@@ -1,5 +1,6 @@
 ## YOLOV4-Tiny：You Only Look Once-Tiny目标检测模型在Pytorch当中的实现
 ---
+**2021年10月12日更新：version:dark_agument** 
 **2021年10月12日更新：**   
 **进行了大幅度的更新，对代码的模块进行修改，加了大量注释。**   
 

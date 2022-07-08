@@ -35,7 +35,6 @@ C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1295).jpg 775,1012,902,1056,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1308).jpg 1153,938,1246,968,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1321).jpg 681,1481,847,1520,1
-C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1343).jpg 690,1009,796,1042,2
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1361).jpg 982,932,1075,959,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1363).jpg 910,958,1003,983,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(1367).jpg 1022,919,1112,946,0
@@ -100,7 +99,6 @@ C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(682).jpg 861,901,985,939,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(683).jpg 834,1077,938,1109,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(692).jpg 1153,1026,1254,1061,0
-C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(695).jpg 1078,1070,1192,1100,2
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(7).jpg 559,988,654,1014,0 709,544,781,567,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(704).jpg 971,951,1069,977,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(719).jpg 1137,953,1229,980,0 875,258,924,273,1

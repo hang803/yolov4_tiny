@@ -903,7 +903,6 @@ C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(690).jpg 1047,1033,1181,1073,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(691).jpg 998,971,1101,1001,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(693).jpg 913,1001,1009,1031,0
-C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(694).jpg 1023,973,1132,1004,2
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(696).jpg 1024,985,1122,1014,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(697).jpg 1020,1251,1213,1311,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(698).jpg 996,959,1094,989,0
@@ -1120,7 +1119,6 @@ C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(929).jpg 1137,1067,1241,1099,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(93).jpg 1131,994,1261,1028,1
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(930).jpg 957,1024,1060,1052,0 937,173,984,188,0
-C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(931).jpg 937,988,1045,1015,2
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(932).jpg 875,988,976,1015,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(933).jpg 950,1005,1047,1035,0 936,272,991,289,0
 C:\Users\Administrator\PycharmProjects\yolo\yolov4-tiny-pytorch-master\VOCdevkit/VOC2007/JPEGImages/(934).jpg 770,929,860,952,0

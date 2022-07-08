@@ -13,7 +13,7 @@ from utils.callbacks import LossHistory
 from utils.dataloader import YoloDataset, yolo_dataset_collate
 from utils.utils import get_anchors, get_classes
 from utils.utils_fit import fit_one_epoch
-
+#使用steam++
 '''
 训练自己的目标检测模型一定需要注意以下几点：
 1、训练前仔细检查自己的格式是否满足要求，该库要求数据集格式为VOC格式，需要准备好的内容有输入图片和标签
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     #------------------------------------------------------#
     #   输入的shape大小，一定要是32的倍数
     #------------------------------------------------------#
-    input_shape     = [1920, 1920]
+    input_shape     = [960, 960]
     #-------------------------------#
     #   所使用的注意力机制的类型
     #   phi = 0为不使用注意力机制
@@ -103,8 +103,8 @@ if __name__ == "__main__":
     #   占用的显存较小，仅对网络进行微调
     #----------------------------------------------------#
     Init_Epoch          = 0
-    Freeze_Epoch        = 50
-    Freeze_batch_size   = 2
+    Freeze_Epoch        = 25
+    Freeze_batch_size   = 12
     Freeze_lr           = 1e-3
     #----------------------------------------------------#
     #   解冻阶段训练参数
@@ -112,7 +112,7 @@ if __name__ == "__main__":
     #   占用的显存较大，网络所有的参数都会发生改变
     #----------------------------------------------------#
     UnFreeze_Epoch      = 25
-    Unfreeze_batch_size = 2
+    Unfreeze_batch_size = 12
     Unfreeze_lr         = 1e-4
     #------------------------------------------------------#
     #   是否进行冻结训练，默认先冻结主干训练后解冻训练。
