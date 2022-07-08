@@ -121,7 +121,7 @@ class YoloDataset(Dataset):
         dy = int(self.rand(0, h-nh))
         new_image = Image.new('RGB', (w,h), (128,128,128))
         new_image.paste(image, (dx, dy))
-        image = new_image
+        image = np.array(new_image)
         image=RSSR(image)
         #------------------------------------------#
         #   翻转图像
@@ -337,8 +337,4 @@ def RSSR(img, size=3, day2night=True, rate_dark=15, rate_light=2):
         dd_ill.append(channel_ill)
     dd = np.array(dd, dtype='uint8')
     dd = np.transpose(dd, [1, 2, 0])
-    dd_ill = np.array(dd_ill, dtype='uint8')
-    dd_ill = np.transpose(dd_ill, [1, 2, 0])
-    cv2.imshow('ssr', dd)
-    # cv2.imshow('ssr_ill', dd_ill)
     return dd
