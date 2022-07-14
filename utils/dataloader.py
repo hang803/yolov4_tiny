@@ -121,8 +121,11 @@ class YoloDataset(Dataset):
         dy = int(self.rand(0, h-nh))
         new_image = Image.new('RGB', (w,h), (128,128,128))
         new_image.paste(image, (dx, dy))
-        image = np.array(new_image)
-        image=RSSR(image)
+
+        rssr=self.rand()<.5
+        if rssr:
+            image = np.array(new_image)
+            new_image=RSSR(image)
         #------------------------------------------#
         #   翻转图像
         #------------------------------------------#
@@ -161,7 +164,7 @@ class YoloDataset(Dataset):
             box_h = box[:, 3] - box[:, 1]
             box = box[np.logical_and(box_w>1, box_h>1)] 
         
-        return image, box
+        return new_image, box
     
     def merge_bboxes(self, bboxes, cutx, cuty):
         merge_bbox = []
