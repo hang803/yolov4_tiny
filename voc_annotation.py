@@ -51,7 +51,20 @@ def convert_annotation(year, image_id, list_file):
         xmlbox = obj.find('bndbox')
         b = (int(float(xmlbox.find('xmin').text)), int(float(xmlbox.find('ymin').text)), int(float(xmlbox.find('xmax').text)), int(float(xmlbox.find('ymax').text)))
         list_file.write(" " + ",".join([str(a) for a in b]) + ',' + str(cls_id))
-        
+
+def split_lines(filename,lines):
+    data=[]
+    with open(filename,'r') as fp:
+        for i in range(lines):
+            data_line=fp.readline().strip()
+
+            data.append(data_line)
+    with open(filename,'w') as fw:
+        for i in data:
+            fw.writelines(i)
+            fw.write('\n')
+    print('split done:',filename)
+
 if __name__ == "__main__":
     random.seed(0)
     if annotation_mode == 0 or annotation_mode == 1:
@@ -107,3 +120,5 @@ if __name__ == "__main__":
                 list_file.write('\n')
             list_file.close()
         print("Generate 2007_train.txt and 2007_val.txt for train done.")
+        split_lines('2007_train.txt',3000)
+        split_lines('2007_val.txt', 300)
